@@ -1,4 +1,14 @@
 //http://www.html-js.com/article/1603
+var h = {};
+h.createServer = function(){
+    
+    var cb = arguments[arguments.length-1];
+    cb = ( typeof cb == 'function' ) ? cb : null ;
+    
+    if( !cb ) return cb( new Error ('the argument is not function') );
+    cb ( null , req , res , next )
+}
+
 var http = require('http');
 function express(){
     var funcs = [];
