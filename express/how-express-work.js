@@ -2,7 +2,8 @@
 var http = require('http');
 function express(){
     var funcs = [];
-
+    
+    // 是http.createServer的回调，每次有请求都会将 数组中的中间件 依次执行一遍
     var expr = function(req,res){
         var i = 0;
         function next(){            
@@ -12,6 +13,8 @@ function express(){
         }
         next();
     }
+    
+    // use 方法将 中间件按照定义的顺序 push 进数组
     expr.use=function(f){
         funcs.push(f);
     }
